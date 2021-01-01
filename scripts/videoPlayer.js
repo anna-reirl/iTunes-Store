@@ -59,7 +59,7 @@ export const videoPlayerInit = () => {
 
     })
 
-    videoProgress.addEventListener('change', () => {
+    videoProgress.addEventListener('input', () => {
         const duration = videoPlayer.duration
         const value = videoProgress.value
 
