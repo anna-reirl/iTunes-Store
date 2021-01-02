@@ -9,3 +9,7 @@ input.video-volume {
 .video-icon {
     margin-right: 5px;
 }
+
+.video-fullscreen {
+    cursor: pointer;
+}

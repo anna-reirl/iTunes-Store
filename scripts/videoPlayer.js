@@ -6,6 +6,11 @@ export const videoPlayerInit = () => {
     const videoTimePassed = document.querySelector('.video-time__passed')
     const videoTimeTotal = document.querySelector('.video-time__total')
     const videoVolume = document.querySelector('.video-volume')
+    const videoFullscreen = document.querySelector('.video-fullscreen')
+
+    videoFullscreen.addEventListener('click', () => {
+        videoPlayer.requestFullscreen()
+    })
 
     const toogleIcon = () => {
         if (videoPlayer.paused) {
