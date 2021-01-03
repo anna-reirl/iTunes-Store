@@ -87,11 +87,11 @@ export const musicPlayerInit = () => {
 
         audioProgressTiming.style.width = progress + '%'
 
-        const minutesPassed = Math.floor(currentTime / 60) || '00'
-        const secondPassed = Math.floor(currentTime % 60) || '00'
+        const minutesPassed = Math.floor(currentTime / 60) || '0'
+        const secondPassed = Math.floor(currentTime % 60) || '0'
 
-        const minutesTotal = Math.floor(duration / 60) || '00'
-        const secondsTotal = Math.floor(duration % 60) || '00'
+        const minutesTotal = Math.floor(duration / 60) || '0'
+        const secondsTotal = Math.floor(duration % 60) || '0'
 
         audioTimePassed.textContent = `${addZero(minutesPassed)}:${addZero(secondPassed)}`
         audioTimeTotal.textContent = `${addZero(minutesTotal)}:${addZero(secondsTotal)}`
