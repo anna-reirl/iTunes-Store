@@ -28,6 +28,24 @@ export const musicPlayerInit = () => {
         }
     }
 
+    const prevTrack = () => {
+        if(trackIndex !== 0) {
+            trackIndex--
+        } else {
+            trackIndex = playlist.length - 1
+        }
+        loadTrack()
+    }
+
+    const nextTrack = () => {
+        if(trackIndex === playlist.length - 1) {
+            trackIndex = 0
+        } else {
+            trackIndex++
+        }
+        loadTrack()
+    }
+
     audioNavigation.addEventListener('click', event => {
         const target = event.target
 
@@ -46,21 +64,16 @@ export const musicPlayerInit = () => {
         }
 
         if(target.classList.contains('audio-button__prev')) {
-            if(trackIndex !== 0) {
-                trackIndex--
-            } else {
-                trackIndex = playlist.length - 1
-            }
-            loadTrack()
+            prevTrack()
         }
         
         if(target.classList.contains('audio-button__next')) {
-            if(trackIndex === playlist.length - 1) {
-                trackIndex = 0
-            } else {
-                trackIndex++
-            }
-            loadTrack()
+            nextTrack()
         }
+    })
+
+    audioPlayer.addEventListener('ended', () => {
+        nextTrack()
+        audioPlayer.play()
     })
 }
