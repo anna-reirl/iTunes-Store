@@ -1,3 +1,5 @@
+import { addZero } from './supScript.js'  
+
 export const musicPlayerInit = () => {
     const audio = document.querySelector('.audio')
     const audioImg = document.querySelector('.audio-img')
@@ -17,11 +19,11 @@ export const musicPlayerInit = () => {
     const loadTrack = () => {
         const isPlayed = audioPlayer.paused
         const track = playlist[trackIndex]
-        audioImg.src =  `./audio/${track}.jpg`
+        audioImg.src = `./audio/${track}.jpg`
         audioHeader.textContent = track.toUpperCase()
         audioPlayer.src = `./audio/${track}.mp3`
 
-        if(isPlayed) {
+        if (isPlayed) {
             audioPlayer.pause()
         } else {
             audioPlayer.play()
@@ -29,7 +31,7 @@ export const musicPlayerInit = () => {
     }
 
     const prevTrack = () => {
-        if(trackIndex !== 0) {
+        if (trackIndex !== 0) {
             trackIndex--
         } else {
             trackIndex = playlist.length - 1
@@ -38,7 +40,7 @@ export const musicPlayerInit = () => {
     }
 
     const nextTrack = () => {
-        if(trackIndex === playlist.length - 1) {
+        if (trackIndex === playlist.length - 1) {
             trackIndex = 0
         } else {
             trackIndex++
@@ -46,15 +48,16 @@ export const musicPlayerInit = () => {
         loadTrack()
     }
 
+
     audioNavigation.addEventListener('click', event => {
         const target = event.target
 
-        if(target.classList.contains('audio-button__play')) {
-            audio.classList.toggle('play')        
+        if (target.classList.contains('audio-button__play')) {
+            audio.classList.toggle('play')
             audioButtonPlay.classList.toggle('fa-play')
             audioButtonPlay.classList.toggle('fa-pause')
 
-            if(audioPlayer.paused) {
+            if (audioPlayer.paused) {
                 audioPlayer.play()
             } else {
                 audioPlayer.pause()
@@ -63,11 +66,11 @@ export const musicPlayerInit = () => {
             audioHeader.textContent = track.toUpperCase()
         }
 
-        if(target.classList.contains('audio-button__prev')) {
+        if (target.classList.contains('audio-button__prev')) {
             prevTrack()
         }
-        
-        if(target.classList.contains('audio-button__next')) {
+
+        if (target.classList.contains('audio-button__next')) {
             nextTrack()
         }
     })
@@ -75,5 +78,22 @@ export const musicPlayerInit = () => {
     audioPlayer.addEventListener('ended', () => {
         nextTrack()
         audioPlayer.play()
+    })
+
+    audioPlayer.addEventListener('timeupdate', () => {
+        const duration = audioPlayer.duration
+        const currentTime = audioPlayer.currentTime
+        const progress = (currentTime / duration) * 100
+
+        audioProgressTiming.style.width = progress + '%'
+
+        const minutesPassed = Math.floor(currentTime / 60)
+        const secondPassed = Math.floor(currentTime % 60)
+
+        const minutesTotal = Math.floor(duration / 60)
+        const secondsTotal = Math.floor(duration % 60)
+
+        audioTimePassed.textContent = `${addZero(minutesPassed)}:${addZero(secondPassed)}`
+        audioTimeTotal.textContent = `${addZero(minutesTotal)}:${addZero(secondsTotal)}`
     })
 }
