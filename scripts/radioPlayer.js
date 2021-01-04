@@ -11,6 +11,8 @@ export const radioPlayerInit = () => {
     const audio = new Audio()
     audio.type = 'audio/aac'
 
+    let prevVolume = audio.volume
+
     radioStop.disabled = true
 
     const changeIconPlay = () => {
@@ -62,14 +64,14 @@ export const radioPlayerInit = () => {
         audio.muted = false
     })
 
-    // radioMute.addEventListener('click', () => {
-    //     audio.muted = !audio.muted
-    // })
+    radioMute.addEventListener('click', () => {
+        audio.muted = !audio.muted
+    })
 
     radioVolume.value = audio.volume * 100
 
-    // return () => {
-    //     audio.pause()
-    //     changeIconPlay()
-    // }
+    return () => {
+        audio.pause()
+        changeIconPlay()
+    }
  }
