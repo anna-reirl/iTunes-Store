@@ -80,4 +80,10 @@ export const videoPlayerInit = () => {
     videoVolume.addEventListener('input', changeValue)
 
     changeValue();
+
+
+    videoPlayerInit.stop = () => {
+        videoPlayer.pause()
+        toggleIcon()
+    }
 }
