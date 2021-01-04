@@ -15,10 +15,15 @@ input.video-volume {
 }
 
 input.control-volume {
-    max-width:100px;margin-right:5px;
+    max-width: 100px;
+    margin-right:5px;
 }
-.control-icon {margin-right:5px;
+
+.control-icon {
+    margin-right:5px;
 }
+
 .video-fullscreen,.radio-mute{
-    cursor: pointer;font-size:24px;
+    cursor: pointer;
+    font-size: 24px;
 }
