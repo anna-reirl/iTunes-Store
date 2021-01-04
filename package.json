@@ -1,0 +1,23 @@
+{
+  "name": "itunes-store",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anna-reirl/iTunes-Store.git"
+  },
+  "author": "Anna Agabekyan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anna-reirl/iTunes-Store/issues"
+  },
+  "homepage": "https://github.com/anna-reirl/iTunes-Store#readme",
+  "devDependencies": {
+    "webpack": "^5.11.1",
+    "webpack-cli": "^4.3.1"
+  }
+}
