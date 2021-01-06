@@ -82,7 +82,7 @@ export const videoPlayerInit = () => {
     changeValue();
 
 
-    videoPlayerInit.stop = () => {
+    return () => {
         videoPlayer.pause()
         toggleIcon()
     }
