@@ -12,7 +12,7 @@ export const videoPlayerInit = () => {
         videoPlayer.requestFullscreen()
     })
 
-    const toogleIcon = () => {
+    const toggleIcon = () => {
         if (videoPlayer.paused) {
             videoButtonPlay.classList.remove('fa-pause')
             videoButtonPlay.classList.add('fa-play')
@@ -22,19 +22,18 @@ export const videoPlayerInit = () => {
         }
     }
 
-    const tooglePlay = () => {
+    const togglePlay = event => {
+        event.preventDefault()
         if (videoPlayer.paused) {
             videoPlayer.play();
         } else {
             videoPlayer.pause();
         }
-        toogleIcon()
     }
 
     const stopPlay = () => {
         videoPlayer.pause()
-        videoPlayer.currentTime = 0
-
+        // videoPlayer.currentTime = 0
     }
 
     const addZero = n => n < 10 ? '0' + n : n;
@@ -44,11 +43,11 @@ export const videoPlayerInit = () => {
         videoPlayer.volume = valueVolume / 100
     }
 
-    videoPlayer.addEventListener('click', tooglePlay)
-    videoButtonPlay.addEventListener('click', tooglePlay)
+    videoPlayer.addEventListener('click', togglePlay)
+    videoButtonPlay.addEventListener('click', togglePlay)
 
-    videoPlayer.addEventListener('play', toogleIcon)
-    videoPlayer.addEventListener('pause', toogleIcon)
+    videoPlayer.addEventListener('play', toggleIcon)
+    videoPlayer.addEventListener('pause', toggleIcon)
 
     videoButtonStop.addEventListener('click', stopPlay)
     
