@@ -28,6 +28,10 @@ export const musicPlayerInit = () => {
         } else {
             audioPlayer.play()
         }
+
+        audioPlayer.addEventListener('canplay', () => {
+            updateTime()
+        })
     }
 
     const prevTrack = () => {
@@ -37,6 +41,7 @@ export const musicPlayerInit = () => {
             trackIndex = playlist.length - 1
         }
         loadTrack()
+        audioProgressTiming.style.width = 0
     }
 
     const nextTrack = () => {
@@ -46,6 +51,7 @@ export const musicPlayerInit = () => {
             trackIndex++
         }
         loadTrack()
+        audioProgressTiming.style.width = 0
     }
 
 
@@ -80,7 +86,7 @@ export const musicPlayerInit = () => {
         audioPlayer.play()
     })
 
-    audioPlayer.addEventListener('timeupdate', () => {
+    const updateTime = () =>  {
         const duration = audioPlayer.duration
         const currentTime = audioPlayer.currentTime
         const progress = (currentTime / duration) * 100
@@ -95,7 +101,9 @@ export const musicPlayerInit = () => {
 
         audioTimePassed.textContent = `${addZero(minutesPassed)}:${addZero(secondPassed)}`
         audioTimeTotal.textContent = `${addZero(minutesTotal)}:${addZero(secondsTotal)}`
-    })
+    }
+
+    updateTime()
 
     audioProgress.addEventListener('click', event => {
         const x = event.offsetX
@@ -103,4 +111,13 @@ export const musicPlayerInit = () => {
         const progress = (x / allWidth) * audioPlayer.duration
         audioPlayer.currentTime = progress
     })
+
+    musicPlayerInit.stop = () => {
+        if(!audioPlayer.paused) {
+            audioPlayer.pause()
+            audio.classList.remove('play')
+            audioButtonPlay.classList.remove('fa-pause')
+            audioButtonPlay.classList.add('fa-play')
+        }
+    }
 }
