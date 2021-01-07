@@ -9,7 +9,7 @@ const temp = document.querySelector('.temp')
 
 const stopVideoPlayer = videoPlayerInit()
 const stopRadioPlayer = radioPlayerInit()
-musicPlayerInit()
+const stopMusicPlayer = musicPlayerInit()
 
 const deactivationPlayer = () => {
     temp.style.display = 'none';
@@ -18,6 +18,7 @@ const deactivationPlayer = () => {
 
     stopVideoPlayer()
     stopRadioPlayer()
+    stopMusicPlayer()
 
 }
 

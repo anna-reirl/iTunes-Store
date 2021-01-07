@@ -112,7 +112,7 @@ export const musicPlayerInit = () => {
         audioPlayer.currentTime = progress
     })
 
-    musicPlayerInit.stop = () => {
+    return () => {
         if(!audioPlayer.paused) {
             audioPlayer.pause()
             audio.classList.remove('play')
